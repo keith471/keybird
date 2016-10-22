@@ -47,13 +47,13 @@ class Catboard: KeyboardViewController {
                 
                 var index = context.endIndex
                 
-                index = <#T##Collection corresponding to `index`##Collection#>.index(before: index)
+                index = context.index(before: index)
                 if context[index] != " " {
                     textDocumentProxy.insertText(keyOutput)
                     return
                 }
                 
-                index = <#T##Collection corresponding to `index`##Collection#>.index(before: index)
+                index = context.index(before: index)
                 if context[index] == " " {
                     textDocumentProxy.insertText(keyOutput)
                     return
@@ -120,7 +120,11 @@ class Catboard: KeyboardViewController {
             let imagePath = "/Users/archagon/Documents/Programming/OSX/RussianPhoneticKeyboard/External/tasty-imitation-keyboard/\(name).png"
             
             if let pngRep = UIImagePNGRepresentation(capturedImage!) {
-                pngRep.writeToFile(imagePath, atomically: true)
+                do {
+                    try pngRep.write(to: (NSURL(string: imagePath) as! URL))
+                } catch {
+                    //
+                }
             }
             
             self.view.backgroundColor = oldViewColor

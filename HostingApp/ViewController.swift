@@ -56,7 +56,7 @@ class HostingAppViewController: UIViewController {
         //let frameBegin: CGRect! = notification.userInfo?[UIKeyboardFrameBeginUserInfoKey]?.CGRectValue
         let frameEnd: CGRect! = ((notification as NSNotification).userInfo?[UIKeyboardFrameEndUserInfoKey] as AnyObject).cgRectValue
         
-        if frameEnd.height == referenceHeight {
+        if frameEnd?.height == referenceHeight {
             if firstHeightTime == nil {
                 firstHeightTime = CACurrentMediaTime()
                 
@@ -68,7 +68,7 @@ class HostingAppViewController: UIViewController {
                 }
             }
         }
-        else if frameEnd.height != 0 {
+        else if frameEnd?.height != 0 {
             if secondHeightTime == nil {
                 secondHeightTime = CACurrentMediaTime()
 

@@ -112,11 +112,11 @@ class Shape: UIView {
             let ctx = UIGraphicsGetCurrentContext()
             CGColorSpaceCreateDeviceRGB()
             
-            ctx.saveGState()
+            ctx?.saveGState()
           
             let xOffset = (self.bounds.width - self.shape.bounds.width) / CGFloat(2)
             let yOffset = (self.bounds.height - self.shape.bounds.height) / CGFloat(2)
-            ctx?.translateBy(x: xOffset!, y: yOffset!)
+            ctx?.translateBy(x: xOffset, y: yOffset)
             
             self.shape.drawCall(shape.color != nil ? shape.color! : UIColor.black)
             
